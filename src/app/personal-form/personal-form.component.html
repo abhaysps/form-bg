@@ -1,0 +1,183 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Personal Information</h1>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <form #f="ngForm" (ngSubmit)="submitData(f.value)">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input
+                            class="form-control"
+                            name="name"
+                            minlength="4"
+                            placeholder="Enter name"
+                            id="name"
+                            ngModel
+                            #name="ngModel"
+                            required
+                        >
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                            <div *ngIf="name.errors.required">
+                                Name is required.
+                            </div>
+                            <div *ngIf="name.errors.minlength">
+                                Name must be at least 4 characters long.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input
+                            class="form-control"
+                            type="email"
+                            name="email"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                            placeholder="Enter Email"
+                            id="email"
+                            ngModel
+                            #email="ngModel"
+                            required
+                        >
+                        <div *ngIf="email.errors &&(email.touched || email.dirty)" class ="alert alert-danger">
+                            <div [hidden]="!email.errors?.pattern">
+                              Invalid pattern
+                            </div> 
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="blood_group">Blood Group:</label>
+                            <select class="form-control" id="blood" name="blood_group" ngModel>
+                                <option disabled selected value> -- select an option -- </option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>O+</option>
+                                <option>O-</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="nation">Nationality</label>
+                            <select class="form-control" id="nation" name="nationality" ngModel>
+                                <option disabled selected value> -- select an option -- </option>
+                                <option>Indian</option>
+                                <option>Non-Indian</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="identity">Identity Proof</label>
+                        <select 
+                            class="form-control" 
+                            id="identity" 
+                            (change)="selectIdentity($event.target.value)" 
+                            name="identity_proof" 
+                            ngModel
+                        >
+                            <option disabled selected value> -- select an option -- </option>
+                            <option>Aadhaar Card</option>
+                            <option>PAN Card</option>
+                            <option>Passport</option>
+                        </select>
+                    </div>
+                    <div class="row" *ngIf="identity === 'aadhaar'">
+                        <div class="form-group col-md-6">
+                            <label>Full Name (as per Aadhaar Card)</label>
+                            <input
+                            class="form-control"
+                            name="aadhaar"
+                            placeholder="Enter Name"
+                            id="aadhaar"
+                            ngModel
+                            required
+                        >
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Aadhaar Number</label>
+                            <input
+                            class="form-control"
+                            name="aadhaar_number"
+                            placeholder="Enter Aadhaar Number"
+                            id="aadhaar_number"
+                            ngModel
+                            required
+                        >
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="identity === 'pan'">
+                        <div class="form-group col-md-6">
+                            <label>Full Name (as per PAN Card)</label>
+                            <input
+                            class="form-control"
+                            name="pan"
+                            placeholder="Enter Name"
+                            id="pan"
+                            ngModel
+                            required
+                        >
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>PAN Number</label>
+                            <input
+                            class="form-control"
+                            name="pan_number"
+                            placeholder="Enter PAN Number"
+                            id="pan_number"
+                            ngModel
+                            required
+                        >
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="identity === 'passport'">
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label>Name (as per Passport)</label>
+                            <input
+                            class="form-control"
+                            name="passport"
+                            placeholder="Enter Name"
+                            id="passport_name"
+                            ngModel
+                            required
+                        >
+                        </div>
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label>Surname (as per Passport)</label>
+                            <input
+                            class="form-control"
+                            name="passport_surname"
+                            placeholder="Enter Surname"
+                            id="passport_surname"
+                            ngModel
+                            required
+                        >
+                        </div>
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label>Passport Number</label>
+                            <input
+                            class="form-control"
+                            name="passport_number"
+                            placeholder="Enter Passport Number"
+                            id="passport_number"
+                            ngModel
+                            required
+                        >
+                        </div>
+                    </div>
+                    <button
+                        type="submit"
+                        class="btn btn-primary mt-2"
+                    >
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer">
+        </div>
+    </div>
+</div>
