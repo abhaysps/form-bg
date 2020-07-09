@@ -15,7 +15,6 @@ export class AppComponent {
     this.togglePersonalForm = !this.togglePersonalForm
   }
   showPersonalData(value) {
-    console.log('VALUE RENDERED : ', value)
     this.personalData = value;
     this.togglePersonalForm = !this.togglePersonalForm;
   }
