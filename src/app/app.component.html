@@ -22,4 +22,10 @@
   *ngIf="togglePersonalForm"
   (personalData) = "showPersonalData($event)"
 ></app-personal-form>
-<app-user-detail *ngIf="userDetail"></app-user-detail>
+<app-user-detail 
+  *ngIf="userDetail"
+  [wholeData]="wholeData"
+></app-user-detail>
+<div class="btn btn-primary" (click)="openFormModal()">
+  Open Experience Dialog Box
+</div>

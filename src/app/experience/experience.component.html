@@ -1,0 +1,97 @@
+<div class="modal-header">
+    <h4 class="modal-title">Experience Form</h4>
+    <button 
+        type="button" 
+        class="close" 
+        aria-label="Close"
+        (click)="activeModal.dismiss('Cross Click')"
+    >
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="row">
+            <div class="col-12">
+                <label for="name">Name:</label>
+                <input
+                    [(ngModel)]="data.name"
+                    [ngModelOptions]="{standalone: true}"
+                    type="text"
+                    disabled
+                    class="form-control"
+                >
+            </div>
+            <div class="col-12">
+                <label for="email">Email:</label>
+                <input
+                    [(ngModel)]="data.email"
+                    [ngModelOptions]="{standalone: true}"
+                    type="text"
+                    disabled
+                    class="form-control"
+                >
+            </div>
+            <div class="col-12">
+                <label for="experience">Experience:</label>
+                <div class="row">
+                    <div class="col-6">
+                        <input
+                        type="text"
+                        placeholder="Months"
+                        [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="experience.month"
+                        name="month"
+                        class="form-control"
+                    >
+                    </div>
+                    <div class="col-6">
+                        <input
+                        type="text"
+                        placeholder="Years"
+                        [ngModelOptions]="{standalone: true}"
+                        name="year"
+                        [(ngModel)]="experience.year"
+                        class="form-control"
+                    >
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <label>Technical Skills:</label>
+                    <div class="col-12">
+                        <div *ngIf="technicalSkills.length">
+                            <div class="row">
+                                <div *ngFor="let skill of technicalSkills;" class="skill-set col-3 mr-2">
+                                    <span class="skill-name">
+                                        {{skill}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="skillValue.skill"
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                    >
+                </div>
+                <div class="btn btn-primary" (click)="addSkill()">
+                    Add Skill
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button
+        class="btn btn-primary"
+        (click)="submit()"
+        type="submit"
+    >
+        Submit Data
+    </button>
+</div>

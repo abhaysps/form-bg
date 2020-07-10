@@ -6,64 +6,105 @@
         <div class="row">
             <div class="col-12">
                 <span class="mr-5">Name:</span>
-                <span>{{fetchedUser.name}}</span>
+                <span *ngIf="!fetchedUser?.data?.name">N/A</span>
+                <span *ngIf="fetchedUser?.data?.name">{{fetchedUser?.data?.name}}</span>
             </div>
             <div class="col-12">
                 <span class="mr-5">Email:</span>
-                <span>{{fetchedUser.email}}</span>
+                <span *ngIf="!fetchedUser?.data?.email">N/A</span>
+                <span *ngIf="fetchedUser?.data?.email">{{fetchedUser?.data?.email}}</span>
             </div>
             <div class="col-12">
                 <span class="mr-3">Blood Group:</span>
-                <span>{{fetchedUser.blood_group}}</span>
+                <span *ngIf="!fetchedUser?.data?.blood_group">N/A</span>
+                <span *ngIf="fetchedUser?.data?.blood_group">{{fetchedUser?.data?.blood_group}}</span>
             </div>
         </div>
         <div class="row">
             <div class="col-6">
                 <span class="md-5">Nationality:</span>
-                <span>{{fetchedUser.nationality}}</span>
+                <span *ngIf="!fetchedUser?.data?.nationality">N/A</span>
+                <span *ngIf="fetchedUser?.data?.nationality">{{fetchedUser?.data?.nationality}}</span>
             </div>
             <div class="col-6">
                 <span class="md-5">Identity Proof: </span>
-                <span>{{fetchedUser.identity_proof}}</span>
+                <span *ngIf="fetchedUser?.data?.identity_proof.length">{{fetchedUser?.data?.identity_proof}}</span>
+                <span *ngIf="!fetchedUser?.data?.identity_proof.length">N/A</span>
             </div>
         </div>
         <div>
-            <div *ngIf="fetchedUser.identity_proof === 'Aadhaar Card'" class="row">
+            <div *ngIf="fetchedUser?.identity_proof === 'Aadhaar Card'" class="row">
                 <div class="col-12">
                     <span>Full Name (as per Aadhaar Card): </span>
-                    <span>{{fetchedUser.aadhaar}}</span>
+                    <span *ngIf="!fetchedUser?.data?.aadhaar">N/A</span>
+                    <span *ngIf="fetchedUser?.data?.aadhaar">{{fetchedUser?.data?.aadhaar}}</span>
                 </div>
                 <div class="col-12">
                     <span>Aadhaar Number: </span>
-                    <span>{{fetchedUser.aadhaar_number}}</span>
+                    <span *ngIf="!fetchedUser?.data?.aadhaar_number">N/A</span>
+                    <span *ngIf="fetchedUser?.data?.aadhaar_number">{{fetchedUser?.data?.aadhaar_number}}</span>
                 </div>
             </div>
-            <div *ngIf="fetchedUser.identity_proof === 'PAN Card'" class="row">
+            <div *ngIf="fetchedUser?.identity_proof === 'PAN Card'" class="row">
                 <div class="col-12">
                     <span>Full Name (as per PAN Card): </span>
-                <span>{{fetchedUser.pan}}</span>
+                    <span *ngIf="!fetchedUser?.data?.pan">N/A</span>
+                    <span *ngIf="fetchedUser?.data?.pan">{{fetchedUser?.data?.pan}}</span>
                 </div>
                 <div class="col-12">
                     <span>Aadhaar Number: </span>
-                    <span>{{fetchedUser.pan_number}}</span>
+                    <span *ngIf="!fetchedUser?.data?.pan_number">N/A</span>
+                    <span *ngIf="fetchedUser?.data?.pan_number">{{fetchedUser?.data?.pan_number}}</span>
                 </div>
             </div>
-            <div *ngIf="fetchedUser.identity_proof === 'Passport'" class="row">
+            <div *ngIf="fetchedUser?.identity_proof === 'Passport'" class="row">
                 <div class="col-12">
                     <span>Full Name (as per Passport): </span>
-                <span>{{fetchedUser.passport}}</span>
+                    <span *ngIf="!fetchedUser?.data?.passport">N/A</span>
+                    <span *ngIf="fetchedUser?.data?.passport">{{fetchedUser?.data?.passport}}</span>
                 </div>
                 <div class="col-12">
                     <span>Surname: </span>
-                    <span>{{fetchedUser.passport_surname}}</span>
+                    <span *ngIf="!fetchedUser?.data?.passport_surname">N/A</span>
+                    <span *ngIf="fetchedUser?.data?.passport_surname">{{fetchedUser?.data?.passport_surname}}</span>
                 </div>
                 <div class="col-12">
                     <span>Passport Number: </span>
-                    <span>{{fetchedUser.passport_number}}</span>
+                    <span *ngIf="!fetchedUser?.data?.passport_number">N/A</span>
+                    <span *ngIf="fetchedUser?.data?.passport_number">{{fetchedUser?.data?.passport_number}}</span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <h2>Experience Details</h2>
+        <div class="row" style="font-size: 30px;">
+            <div class="col-6">
+                <label>Experience(Months): </label>
+                <span *ngIf="!fetchedUser?.month">N/A</span>
+                <span *ngIf="fetchedUser?.month">{{fetchedUser?.month}}</span>
+            </div>
+            <div class="col-6">
+                <label>Experience(Years): </label>
+                <span *ngIf="!fetchedUser?.year">N/A</span>
+                <span *ngIf="fetchedUser?.year">{{fetchedUser?.year}}</span>
+            </div>
+            <div class="col-12">
+                <label>Technical Skills: </label>
+            </div>
+            <div class="col-12">
+                <div *ngFor="let skill of fetchedUser?.skill">
+                    <span *ngIf="fetchedUser?.skill.length === 0">
+                        N/A
+                    </span>
+                    <span *ngIf="fetchedUser?.skill.length === 1">
+                        {{skill}}
+                    </span>
+                    <span *ngIf="fetchedUser?.skill.length > 1">
+                        {{skill}}, 
+                    </span>
                 </div>
             </div>
         </div>
       </div>
     </div>
-    <br>
 </div>

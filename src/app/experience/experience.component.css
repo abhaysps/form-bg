@@ -1,0 +1,10 @@
+.skill-set {
+    background-color: blue;
+    border-radius: 20px;
+    text-align: center;
+    width: 50%;
+    margin-bottom: 5px;
+}
+.skill-name {
+    color: white;      
+} 
